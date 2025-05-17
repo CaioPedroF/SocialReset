@@ -37,6 +37,19 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "2e008594-39d4-4568-968f-d883018031cf"
+      }
+    },
+    "owner": "caio12544",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/2e008594-39d4-4568-968f-d883018031cf"
     }
   }
 }
