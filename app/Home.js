@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 export default function Home() {
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const router = useRouter()
 
   // Inicia o temporizador
   useEffect(() => {
@@ -13,6 +15,11 @@ export default function Home() {
 
     return () => clearInterval(interval); // limpa o intervalo ao sair
   }, []);
+
+  // Função para resetar o tempo
+  const resetTimer = () => {
+    setElapsedSeconds(0);
+  };
 
   // Converte segundos em dias, horas, minutos e segundos
   const days = Math.floor(elapsedSeconds / 86400);
@@ -26,7 +33,7 @@ export default function Home() {
       <View style={styles.header}>
         <Ionicons name="menu" size={28} color="#fff" />
         <Text style={styles.headerText}>Home</Text>
-        <Ionicons name="person-circle-outline" size={28} color="#fff" />
+        <Ionicons onPress={() => router.push('/TelaUsuario')} name="person-circle-outline" size={28} color="#fff"  />
       </View>
 
       {/* Temporizador */}
@@ -48,6 +55,11 @@ export default function Home() {
           <Text style={styles.timerLabel}>Segundos</Text>
         </View>
       </View>
+
+      {/* Botão de Resetar */}
+      <TouchableOpacity style={styles.resetButton} onPress={resetTimer}>
+        <Text style={styles.resetButtonText}>Resetar Tempo</Text>
+      </TouchableOpacity>
 
       {/* Botões centrais */}
       <View style={styles.actionRow}>
@@ -117,6 +129,19 @@ const styles = StyleSheet.create({
   timerLabel: {
     fontSize: 14,
     color: '#fff',
+  },
+  resetButton: {
+    backgroundColor: '#ff6347',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    alignSelf: 'center',
+    marginBottom: 20,
+  },
+  resetButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   actionRow: {
     flexDirection: 'row',
