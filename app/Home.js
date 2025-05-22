@@ -89,8 +89,8 @@ export default function Home() {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.footerButton}>
-          <MaterialCommunityIcons name="target" size={24} color="#fff" />
-          <Text style={styles.footerText}>Metas</Text>
+          <MaterialCommunityIcons onPress={() => router.push('/TelaAtividades')} name="target" size={24} color="#fff" />
+          <Text  style={styles.footerText}>Metas</Text>
         </TouchableOpacity>
       </View>
     </View>
