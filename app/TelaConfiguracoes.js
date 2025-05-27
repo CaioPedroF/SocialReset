@@ -1,28 +1,23 @@
-import React from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Pressable, Modal } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
-function AnimatedOption({ icon, title, description }) {
+function AnimatedOption({ icon, title, description, onPress }) {
   const scale = useSharedValue(1);
-  
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
       transform: [{ scale: scale.value }],
     };
   });
-  
 
   return (
     <Pressable
-      onPressIn={() => {
-        scale.value = withSpring(0.95);
-      }}
-      onPressOut={() => {
-        scale.value = withSpring(1);
-      }}
+      onPressIn={() => { scale.value = withSpring(0.95); }}
+      onPressOut={() => { scale.value = withSpring(1); }}
+      onPress={onPress}
       style={({ pressed }) => [
         styles.option,
         { opacity: pressed ? 0.7 : 1 }
@@ -40,26 +35,75 @@ function AnimatedOption({ icon, title, description }) {
 }
 
 export default function Configuracoes() {
-    const router = useRouter()
+  const router = useRouter();
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handleLogout = () => {
+    console.log('Desconectando...');
+    setModalVisible(false);
+    // Aqui você pode navegar ou limpar dados.
+  };
+
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
         <Ionicons name="person-circle-outline" size={60} color="#fff" />
         <Text style={styles.username}>Nome do usuário</Text>
       </View>
 
-      {/* Opções */}
-      <AnimatedOption icon="lock" title="Conta" description="Aqui você altera as configurações de sua conta." />
-      <AnimatedOption icon="lock" title="Privacidade" description="Aqui você controla o que compartilha conosco." onPress={() => router.push('/TelaConfiguracoesPrivacidade')}  />
-      <AnimatedOption icon="lock" title="Notificações" description="Aqui você controla as notificações que você recebe." />
-      <AnimatedOption icon="lock" title="Desconectar" description="Desconecte a sua conta do aplicativo." />
+      <AnimatedOption 
+        icon="lock" 
+        title="Conta" 
+        description="Aqui você altera as configurações de sua conta." 
+      />
+
+      <AnimatedOption 
+        icon="lock" 
+        title="Privacidade" 
+        description="Aqui você controla o que compartilha conosco." 
+        onPress={() => router.push('/TelaConfiguracoesPrivacidade')}
+      />
+
+      <AnimatedOption 
+        icon="lock" 
+        title="Notificações" 
+        description="Aqui você controla as notificações que você recebe." 
+      />
+
+      <AnimatedOption 
+        icon="lock" 
+        title="Desconectar" 
+        description="Desconecte a sua conta do aplicativo." 
+        onPress={() => setModalVisible(true)}
+      />
 
       {/* Footer */}
-      <Pressable style={styles.footer}>
+      <Pressable style={styles.footer} onPress={() => router.push('/home')}>
         <Ionicons name="home-outline" size={24} color="#fff" />
         <Text style={styles.footerText}>Tela inicial</Text>
       </Pressable>
+
+      {/* Modal de confirmação */}
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>Deseja desconectar a sua conta?</Text>
+            <View style={styles.modalButtons}>
+              <Pressable style={styles.modalButton} onPress={() => setModalVisible(false)}>
+                <Text>Não</Text>
+              </Pressable>
+              <Pressable style={styles.modalButton} onPress={handleLogout}>
+                <Text>Sim</Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -113,5 +157,37 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginLeft: 8,
     fontSize: 14,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    backgroundColor: '#7d7dfc',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: '#0099ff',
+  },
+  modalText: {
+    marginBottom: 20,
+    fontSize: 16,
+    color: '#000',
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  modalButton: {
+    backgroundColor: '#7d7dfc',
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#000',
+    marginHorizontal: 5,
   },
 });

@@ -1,11 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, Animated, Pressable, Switch } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 export default function ConfiguracoesRastreamento() {
   const [rastreamento, setRastreamento] = useState(true);
   const [atividadesOffline, setAtividadesOffline] = useState(true);
   const [modoDescanso, setModoDescanso] = useState(true);
+  const router = useRouter();
 
   const scaleAnim = useRef(new Animated.Value(1)).current;
 
@@ -30,7 +32,7 @@ export default function ConfiguracoesRastreamento() {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Ionicons style={styles.icon} name="arrow-back" size={24} color="#fff" />
+        <Ionicons onPress={() => router.push('/TelaConfiguracoes')} style={styles.icon} name="arrow-back" size={24} color="#fff" />
         <Ionicons name="person-circle-outline" size={48} color="#fff" />
         <Text style={styles.username}>Nome do usuário</Text>
       </View>
