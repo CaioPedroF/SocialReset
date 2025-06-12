@@ -2,8 +2,11 @@ import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, Animated, Pressable, Switch } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+<<<<<<< HEAD
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+=======
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
 
 export default function ConfiguracoesRastreamento() {
   const [rastreamento, setRastreamento] = useState(true);

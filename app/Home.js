@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
@@ -72,12 +73,40 @@ export default function Home() {
     }
   };
 
+=======
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+
+export default function Home() {
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const router = useRouter()
+
+  // Inicia o temporizador
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setElapsedSeconds(prev => prev + 1);
+    }, 1000); // atualiza a cada segundo
+
+    return () => clearInterval(interval); // limpa o intervalo ao sair
+  }, []);
+
+  // Função para resetar o tempo
+  const resetTimer = () => {
+    setElapsedSeconds(0);
+  };
+
+  // Converte segundos em dias, horas, minutos e segundos
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
   const days = Math.floor(elapsedSeconds / 86400);
   const hours = Math.floor((elapsedSeconds % 86400) / 3600);
   const minutes = Math.floor((elapsedSeconds % 3600) / 60);
   const seconds = elapsedSeconds % 60;
+<<<<<<< HEAD
   const totalHours = Math.floor(elapsedSeconds / 3600);
 
+=======
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
 
   return (
     <View style={styles.container}>
@@ -85,9 +114,13 @@ export default function Home() {
       <View style={styles.header}>
         <Ionicons name="menu" size={28} color="#fff" />
         <Text style={styles.headerText}>Home</Text>
+<<<<<<< HEAD
         <TouchableOpacity onPress={() => router.push('/TelaUsuario')}>
             <Ionicons name="person-circle-outline" size={28} color="#fff" />
         </TouchableOpacity>
+=======
+        <Ionicons onPress={() => router.push('/TelaUsuario')} name="person-circle-outline" size={28} color="#fff"  />
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
       </View>
 
       {/* Temporizador */}
@@ -111,7 +144,11 @@ export default function Home() {
       </View>
 
       {/* Botão de Resetar */}
+<<<<<<< HEAD
       <TouchableOpacity style={styles.resetButton} onPress={handleResetTimer}>
+=======
+      <TouchableOpacity style={styles.resetButton} onPress={resetTimer}>
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
         <Text style={styles.resetButtonText}>Resetar Tempo</Text>
       </TouchableOpacity>
 
@@ -119,7 +156,11 @@ export default function Home() {
       <View style={styles.actionRow}>
         <FontAwesome name="calendar" size={28} color="#00b4fc" />
         <TouchableOpacity style={styles.actionButton}>
+<<<<<<< HEAD
           <Text style={styles.actionText}>{totalHours} horas sem utilizar redes sociais</Text>
+=======
+          <Text style={styles.actionText}>{hours + minutes / 60} horas sem utilizar redes sociais</Text>
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
         </TouchableOpacity>
       </View>
 
@@ -137,14 +178,24 @@ export default function Home() {
           <Text style={styles.footerText}>Tela inicial</Text>
         </TouchableOpacity>
 
+<<<<<<< HEAD
         <TouchableOpacity style={styles.centerButton} onPress={handleResetTimer}>
+=======
+        <TouchableOpacity style={styles.centerButton}>
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
           <Ionicons name="add" size={36} color="#000" />
           <Text style={styles.footerTextCenter}>Começar!</Text>
         </TouchableOpacity>
 
+<<<<<<< HEAD
         <TouchableOpacity style={styles.footerButton} onPress={() => router.push('/TelaAtividades')}>
             <MaterialCommunityIcons name="target" size={24} color="#fff" />
             <Text style={styles.footerText}>Metas</Text>
+=======
+        <TouchableOpacity style={styles.footerButton}>
+          <MaterialCommunityIcons onPress={() => router.push('/TelaAtividades')} name="target" size={24} color="#fff" />
+          <Text  style={styles.footerText}>Metas</Text>
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
         </TouchableOpacity>
       </View>
     </View>
@@ -238,7 +289,11 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   footerTextCenter: {
+<<<<<<< HEAD
     color: '#fff', // Este texto não vai aparecer porque o fundo do ícone é branco
+=======
+    color: '#fff',
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
     fontSize: 12,
     textAlign: 'center',
     marginTop: 6,

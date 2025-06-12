@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import {
+<<<<<<< HEAD
+=======
+//  View,
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
   Text,
   TextInput,
   TouchableOpacity,
   StyleSheet,
+<<<<<<< HEAD
   ScrollView,
   Alert,
   View
@@ -11,12 +16,18 @@ import {
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from './api/axiosConfig'; // <- Importe nossa configuração do Axios
+=======
+  ScrollView
+} from 'react-native';
+import { useRouter } from 'expo-router';
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
 
 export default function Registro() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
+<<<<<<< HEAD
   // Removi o telefone, pois não está no seu modelo de usuário do backend
   const router = useRouter();
 
@@ -66,6 +77,14 @@ export default function Registro() {
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.logo}>SocialReset</Text>
       <Text style={styles.subtitle}>Crie sua conta!</Text>
+=======
+  const [telefone, setTelefone] = useState('');
+  const router = useRouter()
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.logo}>SocialReset</Text>
+      <Text style={styles.subtitle}>Efetue seu Registro!</Text>
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
 
       <TextInput
         style={styles.input}
@@ -77,7 +96,10 @@ export default function Registro() {
         style={styles.input}
         placeholder="E-MAIL"
         keyboardType="email-address"
+<<<<<<< HEAD
         autoCapitalize="none"
+=======
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
         onChangeText={setEmail}
         value={email}
       />
@@ -95,6 +117,7 @@ export default function Registro() {
         onChangeText={setConfirmarSenha}
         value={confirmarSenha}
       />
+<<<<<<< HEAD
 
       <TouchableOpacity style={styles.button} onPress={handleRegistro}>
         <Text style={styles.buttonText}>Registre-se</Text>
@@ -106,10 +129,24 @@ export default function Registro() {
           <Text style={styles.link}> Faça Login</Text>
         </TouchableOpacity>
       </View>
+=======
+      <TextInput
+        style={styles.input}
+        placeholder="Número do telefone"
+        keyboardType="phone-pad"
+        onChangeText={setTelefone}
+        value={telefone}
+      />
+
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/Login')}>
+        <Text style={styles.buttonText}>Registre-se</Text>
+      </TouchableOpacity>
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
     </ScrollView>
   );
 }
 
+<<<<<<< HEAD
 
 const styles = StyleSheet.create({
   container: {
@@ -162,3 +199,45 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+=======
+const styles = StyleSheet.create({
+  container: {
+    padding: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    flexGrow: 1,
+  },
+  logo: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#007BFF',
+    marginBottom: 8,
+  },
+  subtitle: {
+    fontSize: 16,
+    marginBottom: 24,
+    color: '#333',
+  },
+  input: {
+    width: '100%',
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 12,
+  },
+  button: {
+    backgroundColor: '#007BFF',
+    padding: 14,
+    borderRadius: 24,
+    width: '100%',
+    alignItems: 'center',
+    marginTop: 12,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+});
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, FlatList, Alert, TextInput } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
@@ -124,6 +125,57 @@ export default function AtividadesScreen() {
         )}
         ListEmptyComponent={() => <Text style={styles.emptyText}>Ainda não adicionou nenhum interesse.</Text>}
       />
+=======
+import { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+
+export default function Atividades() {
+  const [input, setInput] = useState('');
+  const [atividades, setAtividades] = useState([]);
+  const router = useRouter();
+
+  const adicionarAtividade = () => {
+    if (input.trim() === '') return;
+    setAtividades([...atividades, input.trim()]);
+    setInput('');
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>SocialReset</Text>
+
+      <Text style={styles.subtitle}>Digite o que você gosta de fazer offline</Text>
+
+      <View style={styles.inputRow}>
+        <TextInput
+          style={styles.input}
+          placeholder="Ex: Jogar futebol"
+          placeholderTextColor="#aaa"
+          value={input}
+          onChangeText={setInput}
+        />
+        <TouchableOpacity onPress={adicionarAtividade} style={styles.addButton}>
+          <AntDesign name="pluscircleo" size={24} color="#fff" />
+        </TouchableOpacity>
+      </View>
+
+      <FlatList
+        data={atividades}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.tag}>
+            <Text style={styles.tagText}>{item}</Text>
+          </View>
+        )}
+        style={{ width: '100%', marginTop: 20 }}
+      />
+
+      <TouchableOpacity style={styles.finalizarButton} onPress={() => router.push('/Home')}>
+        <Text style={styles.finalizarText}>Finalizar!</Text>
+      </TouchableOpacity>
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
     </View>
   );
 }
@@ -132,31 +184,48 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#2e2e2e',
+<<<<<<< HEAD
   },
   listContentContainer: {
     paddingHorizontal: 20,
     paddingTop: 60,
     paddingBottom: 40,
+=======
+    padding: 20,
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
   },
   title: {
     color: '#0b84f3',
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
+<<<<<<< HEAD
+=======
+    marginVertical: 20,
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
   },
   subtitle: {
     color: '#fff',
     fontSize: 14,
+<<<<<<< HEAD
     marginTop: 20,
     marginBottom: 10,
   },
   inputContainer: {
     flexDirection: 'row',
     marginBottom: 20,
+=======
+    marginBottom: 12,
+  },
+  inputRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
   },
   input: {
     flex: 1,
     backgroundColor: '#fff',
+<<<<<<< HEAD
     borderRadius: 8,
     paddingHorizontal: 15,
     paddingVertical: 12,
@@ -212,6 +281,39 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   homeButtonText: {
+=======
+    borderRadius: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    marginRight: 10,
+    color: '#000',
+  },
+  addButton: {
+    backgroundColor: '#8b4dff',
+    padding: 8,
+    borderRadius: 6,
+  },
+  tag: {
+    backgroundColor: '#8b4dff',
+    alignSelf: 'flex-start',
+    borderRadius: 6,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    marginBottom: 10,
+  },
+  tagText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  finalizarButton: {
+    backgroundColor: '#8b4dff',
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 'auto',
+  },
+  finalizarText: {
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,

@@ -9,8 +9,11 @@ import {
   ScrollView,
 } from 'react-native';
 import { useRouter } from 'expo-router';
+<<<<<<< HEAD
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+=======
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
 
 export default function Login() {
   const [usuario, setUsuario] = useState('');

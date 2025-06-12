@@ -1,10 +1,16 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';  
+<<<<<<< HEAD
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Tela01() {
   
   const router = useRouter();  
+=======
+
+export default function Tela01() {
+   const router = useRouter();  
+>>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
 
   return (
     <View style={styles.container}>
