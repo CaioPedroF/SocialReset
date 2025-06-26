@@ -1,17 +1,9 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
-<<<<<<< HEAD
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Notificacoes() {
   const router = useRouter();
 
-=======
-
-export default function Notificacoes()
- {
-    const router = useRouter();
->>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
   return (
     <View style={styles.container}>
       <Text style={styles.title}>SocialReset</Text>
@@ -22,11 +14,7 @@ export default function Notificacoes()
         </Text>
       </View>
 
-<<<<<<< HEAD
-      <TouchableOpacity onPress={() => router.push('/Atividades')} style={styles.button} >
-=======
-      <TouchableOpacity  onPress={() => router.push('/Atividades')} style={styles.button} >
->>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
+      <TouchableOpacity onPress={() => router.push('/Atividades')} style={styles.button}>
         <Text style={styles.buttonText}>Permitir</Text>
       </TouchableOpacity>
     </View>
@@ -40,10 +28,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
-<<<<<<< HEAD
-=======
-
->>>>>>> 657b9dd464a6dd8d711db06abbfe6890b49448b5
   },
   title: {
     fontSize: 28,
